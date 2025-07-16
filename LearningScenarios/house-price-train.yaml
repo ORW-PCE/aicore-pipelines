@@ -8,9 +8,10 @@ metadata:
     executables.ai.sap.com/description: "Train with live data"
     executables.ai.sap.com/name: "training" # Executable name should describe the workflow in the use case
     artifacts.ai.sap.com/housedataset.kind: "dataset" # Helps in suggesting the kind of inputs that can be attached.
+    artifacts.ai.sap.com/housemodel.kind: "model"
   labels:
     scenarios.ai.sap.com/id: "learning-datalines"
-    ai.sap.com/version: "1.0"
+    ai.sap.com/version: "2.0"
 spec:
   imagePullSecrets:
     - name: pcetutorial # your docker registry secret
@@ -24,13 +25,18 @@ spec:
     - - name: mypredictor
         template: mycodeblock1
   - name: mycodeblock1
-    metadata:
-        labels:
-            ai.sap.com/resourcePlan: starter
     inputs:
       artifacts:  # placeholder for cloud storage attachements
         - name: housedataset # a name for the placeholder
           path: /app/data/ # where to copy in the Dataset in the Docker image
+    outputs:
+      artifacts:
+        - name: housepricemodel
+          globalName: housemodel
+          path: /app/model
+          archive:
+            none:
+              {}
     container:
       image: docker.io/peterceresna09/house-price:03 # Your docker image name
       command: ["/bin/sh", "-c"]
