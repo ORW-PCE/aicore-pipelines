@@ -8,8 +8,8 @@ metadata:
     executables.ai.sap.com/description: "Greets the user"
     executables.ai.sap.com/name: "Hello Pipeline"
   labels:
-    scenarios.ai.sap.com/id: "learning"
-    ai.sap.com/version: "1.1"
+    scenarios.ai.sap.com/id: "learning-code"
+    ai.sap.com/version: "2.0"
 spec:
   imagePullSecrets:
     - name: pcetutorial
@@ -22,7 +22,7 @@ spec:
 
   - name: greeter
     container:
-      image: docker.io/peterceresna09/house-price:01
+      image: docker.io/peterceresna09/house-price:02
       command: ["/bin/sh", "-c"]
       args:
        - python /app/src/main.py
