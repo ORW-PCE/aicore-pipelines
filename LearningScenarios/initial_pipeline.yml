@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: WorkflowTemplate
 metadata:
-  name: first-pipeline # Executable ID (max length 64 lowercase-hyphen-separated), please modify this to any value if you are not the only user of your SAP AI Core instance. Example: `first-pipeline-1234`
+  name: code-pipeline # Executable ID (max length 64 lowercase-hyphen-separated), please modify this to any value if you are not the only user of your SAP AI Core instance. Example: `first-pipeline-1234`
   annotations:
     scenarios.ai.sap.com/description: "Introduction to SAP AI Core"
     scenarios.ai.sap.com/name: "Tutorial"
@@ -11,6 +11,8 @@ metadata:
     scenarios.ai.sap.com/id: "learning"
     ai.sap.com/version: "1.1"
 spec:
+  imagePullSecrets:
+    - name: pcetutorial
   entrypoint: mypipeline
   templates:
   - name: mypipeline
@@ -20,10 +22,7 @@ spec:
 
   - name: greeter
     container:
-      image: docker.io/python:latest
-      command:
-        - python3
-        - '-c'
+      image: docker.io/peterceresna09/house-price:01
+      command: ["/bin/sh", "-c"]
       args:
-       - |
-        print("PCE first pipeline")
+       - python /app/src/main.py
