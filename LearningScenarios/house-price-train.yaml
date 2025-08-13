@@ -38,7 +38,7 @@ spec:
             none:
               {}
     container:
-      image: docker.io/peterceresna09/house-price:04 # Your docker image name
+      image: docker.io/peterceresna09/house-price:03 # Your docker image name
       command: ["/bin/sh", "-c"]
       env:
         - name: DT_MAX_DEPTH # name of the environment variable inside Docker container
