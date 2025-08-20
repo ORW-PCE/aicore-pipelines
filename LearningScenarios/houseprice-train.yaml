@@ -9,7 +9,7 @@ metadata:
     executables.ai.sap.com/name: "training" # Executable name should describe the workflow in the use case
     artifacts.ai.sap.com/housedataset.kind: "dataset" # Helps in suggesting the kind of inputs that can be attached.
   labels:
-    scenarios.ai.sap.com/id: "learning-datalines"
+    scenarios.ai.sap.com/id: "learning-datalines-fk"
     ai.sap.com/version: "1.0"
 spec:
   imagePullSecrets:
